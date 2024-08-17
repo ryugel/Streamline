@@ -27,7 +27,8 @@ final class StreamlineTests: XCTestCase {
             onReceive: { data in
                 receivedData = data
                 expectation.fulfill()
-            }
+            }, receiveQueue: .main
+            
             
         )
         
@@ -36,7 +37,7 @@ final class StreamlineTests: XCTestCase {
             .eraseToAnyPublisher()
         
         // When
-        let streamLink = StreamLink(
+        _ = StreamLink(
             url: URL(string: "https://ryugel.ryugel")!,
             service: publisher,
             streamChain: streamChain
@@ -69,7 +70,7 @@ final class StreamlineTests: XCTestCase {
             .eraseToAnyPublisher()
         
         // When
-        let streamLink = StreamLink(
+        _ = StreamLink(
             url: URL(string: "https://baran.baran")!,
             service: publisher,
             streamChain: streamChain
@@ -100,7 +101,7 @@ final class StreamlineTests: XCTestCase {
             .eraseToAnyPublisher()
         
         // When
-        let streamLink = StreamLink(
+        _ = StreamLink(
             url: URL(string: "https://ixaal.ixaal")!,
             service: publisher,
             streamChain: streamChain
