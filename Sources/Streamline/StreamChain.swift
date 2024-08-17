@@ -15,7 +15,7 @@ import Combine
 ///
 /// The `StreamChain` struct allows you to define and manage a pipeline for handling data streams,
 /// with options to handle errors, completion, data reception, and data storage.
-struct StreamChain<Content: Any> {
+public struct StreamChain<Content: Any> {
 
     /// Closure to handle any errors that occur during the stream processing.
     var onFailure: ((Error) -> Void)?
