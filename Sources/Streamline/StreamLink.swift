@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  StreamLink.swift
 //  
 //
 //  Created by ryugel on 17/08/2024.
@@ -17,13 +17,13 @@ import Combine
 public struct StreamLink<Content: Any> {
 
     /// The URL from which the data will be fetched.
-    let url: URL
+    public let url: URL
 
     /// The service responsible for fetching the data as a publisher.
-    let service: AnyPublisher<[Content], Error>
+    public let service: AnyPublisher<[Content], Error>
 
     /// The pipeline (`StreamChain`) through which the data will be processed.
-    let streamChain: StreamChain<Content>
+    public let streamChain: StreamChain<Content>
 
     /// Initializes a new `StreamLink` instance with the given URL, service, and stream chain.
     ///
@@ -31,7 +31,7 @@ public struct StreamLink<Content: Any> {
     ///   - url: The URL to fetch data from.
     ///   - service: The publisher service that provides the data.
     ///   - streamChain: The pipeline for processing the fetched data.
-    init(url: URL, service: AnyPublisher<[Content], Error>, streamChain: StreamChain<Content>) {
+    public init(url: URL, service: AnyPublisher<[Content], Error>, streamChain: StreamChain<Content>) {
         self.url = url
         self.service = service
         self.streamChain = streamChain
@@ -59,6 +59,6 @@ public struct StreamLink<Content: Any> {
             })
             .store(in: &cancellables)
         
-        _ = streamChain.withUpdatedCancellables(cancellables)
+        let updatedStreamChain = streamChain.withUpdatedCancellables(cancellables)
     }
 }
