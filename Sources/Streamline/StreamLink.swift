@@ -14,7 +14,7 @@ import Combine
 ///
 /// The `StreamLink` struct is responsible for fetching data from a given URL using a provided service
 /// and then passing the data through a `StreamChain` for processing, error handling, and storage.
-struct StreamLink<Content: Any> {
+public struct StreamLink<Content: Any> {
 
     /// The URL from which the data will be fetched.
     let url: URL
