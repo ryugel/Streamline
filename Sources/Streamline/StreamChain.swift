@@ -18,28 +18,28 @@ import Combine
 public struct StreamChain<Content: Any> {
 
     /// Closure to handle any errors that occur during the stream processing.
-    var onFailure: ((Error) -> Void)?
+    public var onFailure: ((Error) -> Void)?
 
     /// Closure to be called when the stream processing finishes successfully.
-    var onFinish: (() -> Void)?
+    public var onFinish: (() -> Void)?
 
     /// Closure that receives the data once it has been fetched from the stream.
-    var onReceive: (([Content]) -> Void)?
+    public var onReceive: (([Content]) -> Void)?
 
     /// Closure to store the received data and manage the cancellation of the stream.
-    var onStore: (([Content], inout Set<AnyCancellable>) -> Void)?
+    public var onStore: (([Content], inout Set<AnyCancellable>) -> Void)?
 
     /// The dispatch queue on which the data will be received and processed. Defaults to `.main`.
-    var receiveQueue: DispatchQueue = .main
+    public var receiveQueue: DispatchQueue = .main
 
     /// A set of `AnyCancellable` instances to keep track of the stream subscriptions.
-    var cancellables = Set<AnyCancellable>()
+    public var cancellables = Set<AnyCancellable>()
 
     /// Updates the pipeline with a new set of cancellables.
     ///
     /// - Parameter cancellables: The new set of `AnyCancellable` instances.
     /// - Returns: A new `StreamChain` instance with updated cancellables.
-    func withUpdatedCancellables(_ cancellables: Set<AnyCancellable>) -> StreamChain {
+    public func withUpdatedCancellables(_ cancellables: Set<AnyCancellable>) -> StreamChain {
         var newStreamChain = self
         newStreamChain.cancellables = cancellables
         return newStreamChain
