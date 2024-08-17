@@ -16,9 +16,6 @@ import Combine
 /// and then passing the data through a `StreamChain` for processing, error handling, and storage.
 public struct StreamLink<Content: Any> {
 
-    /// The URL from which the data will be fetched.
-    public let url: URL
-
     /// The service responsible for fetching the data as a publisher.
     public let service: AnyPublisher<[Content], Error>
 
@@ -28,11 +25,9 @@ public struct StreamLink<Content: Any> {
     /// Initializes a new `StreamLink` instance with the given URL, service, and stream chain.
     ///
     /// - Parameters:
-    ///   - url: The URL to fetch data from.
     ///   - service: The publisher service that provides the data.
     ///   - streamChain: The pipeline for processing the fetched data.
-    public init(url: URL, service: AnyPublisher<[Content], Error>, streamChain: StreamChain<Content>) {
-        self.url = url
+    public init(service: AnyPublisher<[Content], Error>, streamChain: StreamChain<Content>) {
         self.service = service
         self.streamChain = streamChain
         applyStreamChain()

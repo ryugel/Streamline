@@ -38,7 +38,6 @@ final class StreamlineTests: XCTestCase {
         
         // When
         _ = StreamLink(
-            url: URL(string: "https://ryugel.ryugel")!,
             service: publisher,
             streamChain: streamChain
         )
@@ -71,7 +70,6 @@ final class StreamlineTests: XCTestCase {
         
         // When
         _ = StreamLink(
-            url: URL(string: "https://baran.baran")!,
             service: publisher,
             streamChain: streamChain
         )
@@ -102,7 +100,6 @@ final class StreamlineTests: XCTestCase {
         
         // When
         _ = StreamLink(
-            url: URL(string: "https://ixaal.ixaal")!,
             service: publisher,
             streamChain: streamChain
         )
