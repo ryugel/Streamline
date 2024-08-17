@@ -93,7 +93,7 @@ let service: AnyPublisher<[Post], Error> = URLSession.shared.dataTaskPublisher(f
     .eraseToAnyPublisher()
 
 // Create a StreamLink to fetch and process data
-let streamLink = StreamLink(url: url, service: service, streamChain: pipeline)
+let streamLink = StreamLink(service: service, streamChain: pipeline)
 
 // Ensure the StreamLink is retained to keep the subscription active
 ```
@@ -179,7 +179,7 @@ class PostListViewModel: ObservableObject {
             .eraseToAnyPublisher()
         
         // Create a StreamLink to fetch and process data
-        _ = StreamLink(url: url, service: service, streamChain: pipeline)
+        _ = StreamLink(service: service, streamChain: pipeline)
     }
 }
 ```
