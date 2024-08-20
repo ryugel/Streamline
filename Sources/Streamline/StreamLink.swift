@@ -17,7 +17,7 @@ import Combine
 public struct StreamLink<Content: Any> {
 
     /// The service responsible for fetching the data as a publisher.
-    public let service: AnyPublisher<[Content], Error>
+    public let service: AnyPublisher<Content, Error>
 
     /// The pipeline (`StreamChain`) through which the data will be processed.
     public let streamChain: StreamChain<Content>
@@ -27,7 +27,7 @@ public struct StreamLink<Content: Any> {
     /// - Parameters:
     ///   - service: The publisher service that provides the data.
     ///   - streamChain: The pipeline for processing the fetched data.
-    public init(service: AnyPublisher<[Content], Error>, streamChain: StreamChain<Content>) {
+    public init(service: AnyPublisher<Content, Error>, streamChain: StreamChain<Content>) {
         self.service = service
         self.streamChain = streamChain
         applyStreamChain()

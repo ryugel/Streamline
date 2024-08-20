@@ -23,10 +23,10 @@ public struct StreamChain<Content: Any> {
     public var onFinish: (() -> Void)?
 
     /// Closure that receives the data once it has been fetched from the stream.
-    public var onReceive: (([Content]) -> Void)?
+    public var onReceive: ((Content) -> Void)?
 
     /// Closure to store the received data and manage the cancellation of the stream.
-    public var onStore: (([Content], inout Set<AnyCancellable>) -> Void)?
+    public var onStore: ((Content, inout Set<AnyCancellable>) -> Void)?
 
     /// The dispatch queue on which the data will be received and processed. Defaults to `.main`.
     public var receiveQueue: DispatchQueue = .main
@@ -45,8 +45,8 @@ public struct StreamChain<Content: Any> {
     public init(
         onFailure: ((Error) -> Void)? = nil,
         onFinish: (() -> Void)? = nil,
-        onReceive: (([Content]) -> Void)? = nil,
-        onStore: (([Content], inout Set<AnyCancellable>) -> Void)? = nil,
+        onReceive: ((Content) -> Void)? = nil,
+        onStore: ((Content, inout Set<AnyCancellable>) -> Void)? = nil,
         receiveQueue: DispatchQueue = .main
     ) {
         self.onFailure = onFailure
